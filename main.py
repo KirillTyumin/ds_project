@@ -50,7 +50,7 @@ def porter_and_lemmatizer(tokens):
     return normalized_tokens
 
 
-def tf(tokens, name):
+def write_freq(tokens, name):
     file = open(f"/home/kirill/PycharmProjects/DataScienceProj/frequency_of_{name}.txt", 'w')
     tokens_list = FreqDist(tokens)
     file.write(str([i for i in tokens_list.most_common()]))
@@ -74,8 +74,8 @@ conservative_tokens = tokenize_lean('Conservative')
 lib_lemmas = porter_and_lemmatizer(liberal_tokens)
 con_lemmas = porter_and_lemmatizer(conservative_tokens)
 
-tf(lib_lemmas, 'liberal_terms')
-tf(con_lemmas, 'conservative_terms')
+write_freq(lib_lemmas, 'liberal_terms')
+write_freq(con_lemmas, 'conservative_terms')
 
 make_word_cloud(lib_lemmas)
 make_word_cloud(con_lemmas)
